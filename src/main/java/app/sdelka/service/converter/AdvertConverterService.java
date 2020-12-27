@@ -2,6 +2,7 @@ package app.sdelka.service.converter;
 
 import app.sdelka.dto.AdvertDto;
 import app.sdelka.model.Advert;
+import app.sdelka.model.AdvertElastic;
 import app.sdelka.service.CategoryService;
 import app.sdelka.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -26,5 +27,13 @@ public class AdvertConverterService {
         advert.setCategory(categoryService.findByName(advertDto.getCategory()).orElseThrow());
         advert.setUser(userService.findById(advertDto.getUser_id()).orElseThrow());
         return advert;
+    }
+
+
+    public AdvertElastic convertAdvertDtoInAdvertElastic(AdvertDto advertDto) {
+        final AdvertElastic advertElastic = new AdvertElastic();
+        advertElastic.setName(advertDto.getName());
+        advertElastic.setDescription(advertDto.getDescription());
+        return advertElastic;
     }
 }

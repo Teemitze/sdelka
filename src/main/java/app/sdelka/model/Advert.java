@@ -24,7 +24,7 @@ public class Advert {
     private UUID uuid;
     private String name;
     private String description;
-    private long price;
+    private Long price;
     private String city;
     @Column(name = "create_data")
     private Date createData;

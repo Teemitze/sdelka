@@ -17,8 +17,9 @@ public class AdvertService {
     private final AdvertRepository advertRepository;
     private final AdvertConverterService advertConverterService;
 
-    public void save(AdvertDto advertDto) {
-        advertRepository.save(advertConverterService.convertAdvertDtoInAvertEntity(advertDto));
+    public UUID save(AdvertDto advertDto) {
+        Advert advert = advertRepository.save(advertConverterService.convertAdvertDtoInAvertEntity(advertDto));
+        return advert.getUuid();
     }
 
     public void deleteByUuid(UUID uuid) {
