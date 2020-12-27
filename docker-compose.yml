@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+  postgres_sdelka:
+    image: teemitze/postgres_sdelka
+    container_name: postgres_sdelka
+    ports:
+      - 5432:5432
+  es_sdelka:
+    image: teemitze/es_sdelka
+    container_name: es_sdelka
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+      - 9300:9300
