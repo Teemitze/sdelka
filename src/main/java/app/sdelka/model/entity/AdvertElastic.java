@@ -1,4 +1,4 @@
-package app.sdelka.model;
+package app.sdelka.model.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

@@ -1,7 +1,7 @@
 package app.sdelka.controller;
 
 import app.sdelka.dto.UserDto;
-import app.sdelka.model.User;
+import app.sdelka.model.entity.User;
 import app.sdelka.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;

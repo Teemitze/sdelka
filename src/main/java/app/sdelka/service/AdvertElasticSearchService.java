@@ -1,6 +1,6 @@
 package app.sdelka.service;
 
-import app.sdelka.model.AdvertElastic;
+import app.sdelka.model.entity.AdvertElastic;
 import app.sdelka.repository.AdvertElasticSearchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

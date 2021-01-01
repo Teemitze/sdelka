@@ -1,7 +1,7 @@
 package app.sdelka.service.converter;
 
 import app.sdelka.dto.UserDto;
-import app.sdelka.model.User;
+import app.sdelka.model.entity.User;
 import org.springframework.stereotype.Service;
 
 @Service

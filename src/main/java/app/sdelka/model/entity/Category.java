@@ -1,10 +1,11 @@
-package app.sdelka.model;
+package app.sdelka.model.entity;
 
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,4 +17,7 @@ public class Category {
     @Size(min = 2, max = 30)
     @Pattern(regexp = "^[A-z А-я]+$")
     private String name;
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "parent_id")
+    private List<Category> childCategories;
 }

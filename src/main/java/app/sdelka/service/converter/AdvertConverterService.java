@@ -1,9 +1,9 @@
 package app.sdelka.service.converter;
 
 import app.sdelka.dto.AdvertDto;
-import app.sdelka.model.Advert;
-import app.sdelka.model.AdvertElastic;
-import app.sdelka.service.CategoryService;
+import app.sdelka.model.entity.Advert;
+import app.sdelka.model.entity.AdvertElastic;
+import app.sdelka.service.CategoryServiceDAO;
 import app.sdelka.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AdvertConverterService {
 
-    private final CategoryService categoryService;
+    private final CategoryServiceDAO categoryServiceDAO;
     private final UserService userService;
 
     public Advert convertAdvertDtoInAvertEntity(AdvertDto advertDto) {
@@ -24,7 +24,7 @@ public class AdvertConverterService {
         advert.setCreateData(advertDto.getCreateData());
         advert.setActive(advertDto.isActive());
         advert.setNew(advertDto.isNew());
-        advert.setCategory(categoryService.findByName(advertDto.getCategory()).orElseThrow());
+//        advert.setCategory(categoryServiceDAO.findByName(advertDto.getCategory()).orElseThrow());
         advert.setUser(userService.findById(advertDto.getUser_id()).orElseThrow());
         return advert;
     }

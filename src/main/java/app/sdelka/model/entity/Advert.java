@@ -1,4 +1,4 @@
-package app.sdelka.model;
+package app.sdelka.model.entity;
 
 import com.vladmihalcea.hibernate.type.array.ListArrayType;
 import lombok.Data;

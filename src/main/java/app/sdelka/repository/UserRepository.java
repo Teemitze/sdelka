@@ -1,6 +1,6 @@
 package app.sdelka.repository;
 
-import app.sdelka.model.User;
+import app.sdelka.model.entity.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

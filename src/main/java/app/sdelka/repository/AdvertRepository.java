@@ -1,6 +1,6 @@
 package app.sdelka.repository;
 
-import app.sdelka.model.Advert;
+import app.sdelka.model.entity.Advert;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

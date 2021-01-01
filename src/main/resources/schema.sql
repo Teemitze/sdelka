@@ -14,8 +14,9 @@ CREATE TABLE IF NOT EXISTS users
 
 CREATE TABLE IF NOT EXISTS categories
 (
-    id   SERIAL PRIMARY KEY,
-    name VARCHAR NOT NULL UNIQUE
+    id        SERIAL PRIMARY KEY,
+    name      VARCHAR NOT NULL UNIQUE,
+    parent_id INTEGER REFERENCES categories (id)
 );
 
 

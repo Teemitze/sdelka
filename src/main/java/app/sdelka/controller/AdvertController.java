@@ -1,9 +1,9 @@
 package app.sdelka.controller;
 
 import app.sdelka.dto.AdvertDto;
-import app.sdelka.model.Advert;
-import app.sdelka.model.AdvertElastic;
 import app.sdelka.model.SearchDto;
+import app.sdelka.model.entity.Advert;
+import app.sdelka.model.entity.AdvertElastic;
 import app.sdelka.repository.AdvertElasticSearchRepository;
 import app.sdelka.service.AdvertService;
 import app.sdelka.service.converter.AdvertConverterService;
