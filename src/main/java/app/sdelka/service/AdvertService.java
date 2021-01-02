@@ -1,32 +1,17 @@
 package app.sdelka.service;
 
-import app.sdelka.dto.AdvertDto;
-import app.sdelka.model.entity.Advert;
-import app.sdelka.repository.AdvertRepository;
-import app.sdelka.service.converter.AdvertConverterService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import app.sdelka.controller.dto.AdvertDto;
+import app.sdelka.controller.dto.SearchDto;
 
-import java.util.Optional;
+import java.util.List;
 import java.util.UUID;
 
-@Service
-@RequiredArgsConstructor
-public class AdvertService {
+public interface AdvertService {
+    UUID save(AdvertDto advertDto);
 
-    private final AdvertRepository advertRepository;
-    private final AdvertConverterService advertConverterService;
+    void deleteByUuid(UUID uuid);
 
-    public UUID save(AdvertDto advertDto) {
-        Advert advert = advertRepository.save(advertConverterService.convertAdvertDtoInAvertEntity(advertDto));
-        return advert.getUuid();
-    }
+    AdvertDto findByUuid(UUID uuid);
 
-    public void deleteByUuid(UUID uuid) {
-        advertRepository.deleteByUuid(uuid);
-    }
-
-    public Optional<Advert> findByUuid(UUID uuid) {
-        return advertRepository.findByUuid(uuid);
-    }
+    List<AdvertDto> findByNameOrDescription(SearchDto searchDto);
 }

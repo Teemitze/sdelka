@@ -1,5 +1,7 @@
 package app.sdelka.service;
 
-public interface CategoryService<T> {
-    T findAll();
+import app.sdelka.controller.dto.CategoryDto;
+
+public interface CategoryService {
+    CategoryDto findAll();
 }

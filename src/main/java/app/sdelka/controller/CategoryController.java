@@ -1,6 +1,6 @@
 package app.sdelka.controller;
 
-import app.sdelka.dto.CategoryDto;
+import app.sdelka.controller.dto.CategoryDto;
 import app.sdelka.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 public class CategoryController {
 
-    private final CategoryService<CategoryDto> categoryServiceDTO;
+    private final CategoryService categoryServiceMapping;
 
     @GetMapping("/all")
     public CategoryDto allCategories() {
-        return categoryServiceDTO.findAll();
+        return categoryServiceMapping.findAll();
     }
 }

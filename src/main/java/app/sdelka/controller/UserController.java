@@ -1,13 +1,10 @@
 package app.sdelka.controller;
 
-import app.sdelka.dto.UserDto;
-import app.sdelka.model.entity.User;
+import app.sdelka.controller.dto.UserDto;
 import app.sdelka.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -15,21 +12,20 @@ import java.util.Optional;
 @Validated
 public class UserController {
 
-    private final UserService userService;
+    private final UserService userServiceMapping;
 
     @PostMapping("/save")
     public void save(@RequestBody UserDto userDto) {
-        userService.save(userDto);
+        userServiceMapping.save(userDto);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteById(@PathVariable long id) {
-        userService.deleteById(id);
+    public void deleteById(@PathVariable Long id) {
+        userServiceMapping.deleteById(id);
     }
 
     @GetMapping("/find/{id}")
-    public User findById(@PathVariable long id) {
-        Optional<User> optUser = userService.findById(id);
-        return optUser.orElse(null);
+    public UserDto findById(@PathVariable Long id) {
+        return userServiceMapping.findById(id);
     }
 }

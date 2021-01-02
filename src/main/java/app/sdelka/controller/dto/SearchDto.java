@@ -1,4 +1,4 @@
-package app.sdelka.model;
+package app.sdelka.controller.dto;
 
 import lombok.Data;
 
