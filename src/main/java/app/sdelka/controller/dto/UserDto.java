@@ -17,4 +17,6 @@ public class UserDto {
     private String phone;
     @Email
     private String email;
+    private String password;
+    private boolean enabled;
 }

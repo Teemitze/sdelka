@@ -1,40 +1,34 @@
-DROP TABLE IF EXISTS adverts;
-DROP TABLE IF EXISTS categories;
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS passwords;
-DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS adverts CASCADE;
+DROP TABLE IF EXISTS categories CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS roles CASCADE;
 
-CREATE TABLE IF NOT EXISTS users
+CREATE TABLE roles
 (
-    id    SERIAL PRIMARY KEY,
-    name  VARCHAR NOT NULL,
-    phone VARCHAR NOT NULL,
-    city  VARCHAR NOT NULL,
-    email VARCHAR NOT NULL
+    id   SERIAL PRIMARY KEY,
+    name VARCHAR NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS passwords
+CREATE TABLE users
 (
     id       SERIAL PRIMARY KEY,
+    name     VARCHAR NOT NULL,
+    phone    VARCHAR NOT NULL UNIQUE,
+    city     VARCHAR NOT NULL,
+    email    VARCHAR NOT NULL UNIQUE,
     password VARCHAR NOT NULL,
-    user_id  INTEGER REFERENCES users (id)
+    enabled  BOOLEAN NOT NULL DEFAULT TRUE,
+    role_id  INTEGER REFERENCES roles (id)
 );
 
-CREATE TABLE IF NOT EXISTS roles
-(
-    id      SERIAL PRIMARY KEY,
-    role    VARCHAR NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS categories
+CREATE TABLE categories
 (
     id        SERIAL PRIMARY KEY,
     name      VARCHAR NOT NULL UNIQUE,
     parent_id INTEGER REFERENCES categories (id)
 );
 
-
-CREATE TABLE IF NOT EXISTS adverts
+CREATE TABLE adverts
 (
     uuid        UUID PRIMARY KEY,
     name        VARCHAR NOT NULL,

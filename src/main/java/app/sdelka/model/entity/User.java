@@ -15,4 +15,8 @@ public class User {
     private String phone;
     private String city;
     private String email;
+    private String password;
+    private boolean enabled;
+    @ManyToOne
+    private Role role;
 }
