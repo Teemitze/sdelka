@@ -1,6 +1,8 @@
 DROP TABLE IF EXISTS adverts;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS passwords;
+DROP TABLE IF EXISTS roles;
 
 CREATE TABLE IF NOT EXISTS users
 (
@@ -11,6 +13,18 @@ CREATE TABLE IF NOT EXISTS users
     email VARCHAR NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS passwords
+(
+    id       SERIAL PRIMARY KEY,
+    password VARCHAR NOT NULL,
+    user_id  INTEGER REFERENCES users (id)
+);
+
+CREATE TABLE IF NOT EXISTS roles
+(
+    id      SERIAL PRIMARY KEY,
+    role    VARCHAR NOT NULL
+);
 
 CREATE TABLE IF NOT EXISTS categories
 (
