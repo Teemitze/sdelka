@@ -1,4 +1,4 @@
-package app.sdelka.service;
+package app.sdelka.service.user;
 
 import app.sdelka.controller.dto.UserDto;
 import app.sdelka.model.entity.User;

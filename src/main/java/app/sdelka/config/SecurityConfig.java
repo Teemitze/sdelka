@@ -22,6 +22,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsServiceImpl;
 
+    private final JwtTokenVerifier jwtTokenVerifier;
+
+    private final JwtConfig jwtConfig;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -29,14 +33,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .addFilter(new JwtLoginAndPasswordAuthenticationFilter(authenticationManager()))
-                .addFilterAfter(new JwtTokenVerifier(), JwtLoginAndPasswordAuthenticationFilter.class)
+                .addFilter(new JwtLoginAndPasswordAuthenticationFilter(authenticationManager(), jwtConfig))
+                .addFilterAfter(jwtTokenVerifier, JwtLoginAndPasswordAuthenticationFilter.class)
                 .formLogin(Customizer.withDefaults())
                 .authorizeRequests(authorize -> authorize
                         .mvcMatchers("/login", "/logout").permitAll()
-                        .mvcMatchers("/user/find/**", "/user/save").permitAll()
-                        .mvcMatchers("/advert/find/**").permitAll()
-                        .mvcMatchers("/category/**").authenticated()
+                        .mvcMatchers("/api/v1/user/find/**", "/api/v1/user/save").permitAll()
+                        .mvcMatchers("/api/v1/advert/find/**").permitAll()
+                        .mvcMatchers("/api/v1/category/**").authenticated()
                         .anyRequest().denyAll()
                 );
     }

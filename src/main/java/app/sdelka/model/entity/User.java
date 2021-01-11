@@ -3,6 +3,7 @@ package app.sdelka.model.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -17,6 +18,9 @@ public class User {
     private String email;
     private String password;
     private boolean enabled;
-    @ManyToOne
-    private Role role;
+    @ManyToMany
+    @JoinTable(name = "users_role",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")})
+    private Set<Role> roles;
 }

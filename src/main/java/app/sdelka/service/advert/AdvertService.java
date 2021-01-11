@@ -1,4 +1,4 @@
-package app.sdelka.service;
+package app.sdelka.service.advert;
 
 import app.sdelka.controller.dto.AdvertDto;
 import app.sdelka.controller.dto.SearchDto;

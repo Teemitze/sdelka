@@ -1,13 +1,13 @@
 package app.sdelka.controller;
 
 import app.sdelka.controller.dto.UserDto;
-import app.sdelka.service.UserService;
+import app.sdelka.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
 @Validated
 public class UserController {

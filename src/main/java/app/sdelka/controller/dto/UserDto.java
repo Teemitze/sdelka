@@ -18,5 +18,5 @@ public class UserDto {
     @Email
     private String email;
     private String password;
-    private boolean enabled;
+    private boolean enabled = true;
 }

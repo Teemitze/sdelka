@@ -2,7 +2,7 @@ package app.sdelka.controller;
 
 import app.sdelka.controller.dto.AdvertDto;
 import app.sdelka.controller.dto.SearchDto;
-import app.sdelka.service.AdvertService;
+import app.sdelka.service.advert.AdvertService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/advert")
+@RequestMapping("/api/v1/advert")
 @RequiredArgsConstructor
 @Validated
 public class AdvertController {

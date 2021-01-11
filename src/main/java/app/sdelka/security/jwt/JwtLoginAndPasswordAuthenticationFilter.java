@@ -1,19 +1,19 @@
 package app.sdelka.security.jwt;
 
+import app.sdelka.config.JwtConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -22,22 +22,18 @@ public class JwtLoginAndPasswordAuthenticationFilter extends UsernamePasswordAut
 
     private final AuthenticationManager authenticationManager;
 
+    private final JwtConfig jwtConfig;
+
+    @SneakyThrows
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request,
-                                                HttpServletResponse response) throws AuthenticationException {
+                                                HttpServletResponse response) {
 
+        final LoginAndPasswordAuthenticationRequest authenticationRequest = new ObjectMapper()
+                .readValue(request.getInputStream(), LoginAndPasswordAuthenticationRequest.class);
 
-        LoginAndPasswordAuthenticationRequest authenticationRequest = null;
-        try {
-            authenticationRequest = new ObjectMapper()
-                    .readValue(request.getInputStream(), LoginAndPasswordAuthenticationRequest.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Authentication authentication = new UsernamePasswordAuthenticationToken(
-                authenticationRequest.getLogin(), authenticationRequest.getPassword()
-        );
+        final Authentication authentication = new UsernamePasswordAuthenticationToken(
+                authenticationRequest.getLogin(), authenticationRequest.getPassword());
 
         return authenticationManager.authenticate(authentication);
     }
@@ -47,16 +43,14 @@ public class JwtLoginAndPasswordAuthenticationFilter extends UsernamePasswordAut
                                             HttpServletResponse response,
                                             FilterChain chain,
                                             Authentication authResult) {
-
-        String key = "secsecuresecuresecuresecuresecuresecuresecuresecureuresecuresecuresecuresecure";
-
-        String token = Jwts.builder()
+        final String token = Jwts.builder()
+                .setHeaderParam("typ", "JWT")
                 .setSubject(authResult.getName())
                 .claim("authorities", authResult.getAuthorities())
                 .setIssuedAt(new Date())
-                .setExpiration(java.sql.Date.valueOf(LocalDate.now().plusWeeks(2)))
-                .signWith(Keys.hmacShaKeyFor(key.getBytes())).compact();
+                .setExpiration(java.sql.Date.valueOf(LocalDate.now().plusWeeks(jwtConfig.getTokenExpirationAfterDays())))
+                .signWith(jwtConfig.getSecretKeyForSigning()).compact();
 
-        response.addHeader("Authorization", token);
+        response.addHeader(HttpHeaders.AUTHORIZATION, token);
     }
 }

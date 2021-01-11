@@ -17,8 +17,13 @@ CREATE TABLE users
     city     VARCHAR NOT NULL,
     email    VARCHAR NOT NULL UNIQUE,
     password VARCHAR NOT NULL,
-    enabled  BOOLEAN NOT NULL DEFAULT TRUE,
-    role_id  INTEGER REFERENCES roles (id)
+    enabled  BOOLEAN NOT NULL DEFAULT TRUE
+);
+
+CREATE TABLE users_role
+(
+    user_id INTEGER REFERENCES users (id),
+    role_id INTEGER REFERENCES roles (id)
 );
 
 CREATE TABLE categories

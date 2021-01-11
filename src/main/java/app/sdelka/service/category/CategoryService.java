@@ -1,4 +1,4 @@
-package app.sdelka.service;
+package app.sdelka.service.category;
 
 import app.sdelka.controller.dto.CategoryDto;
 
