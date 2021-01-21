@@ -1,7 +1,7 @@
 package app.sdelka.service.conversion;
 
 import app.sdelka.controller.dto.UserDto;
-import app.sdelka.model.entity.User;
+import app.sdelka.entity.User;
 import app.sdelka.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

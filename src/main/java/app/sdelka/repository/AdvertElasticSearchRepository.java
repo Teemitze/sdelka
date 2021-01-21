@@ -1,6 +1,6 @@
 package app.sdelka.repository;
 
-import app.sdelka.model.entity.AdvertElastic;
+import app.sdelka.entity.AdvertElastic;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

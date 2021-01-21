@@ -1,6 +1,6 @@
 package app.sdelka.repository;
 
-import app.sdelka.model.entity.Category;
+import app.sdelka.entity.Category;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

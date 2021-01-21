@@ -1,7 +1,7 @@
 package app.sdelka.service.user;
 
 import app.sdelka.controller.dto.UserDto;
-import app.sdelka.model.entity.User;
+import app.sdelka.entity.User;
 import app.sdelka.repository.UserRepository;
 import app.sdelka.service.conversion.UserConversion;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package app.sdelka.service.conversion;
 
 import app.sdelka.controller.dto.CategoryDto;
-import app.sdelka.model.entity.Category;
+import app.sdelka.entity.Category;
 import app.sdelka.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

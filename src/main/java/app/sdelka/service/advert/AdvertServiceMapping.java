@@ -2,7 +2,7 @@ package app.sdelka.service.advert;
 
 import app.sdelka.controller.dto.AdvertDto;
 import app.sdelka.controller.dto.SearchDto;
-import app.sdelka.model.entity.Advert;
+import app.sdelka.entity.Advert;
 import app.sdelka.repository.AdvertRepository;
 import app.sdelka.service.conversion.AdvertConversion;
 import lombok.RequiredArgsConstructor;

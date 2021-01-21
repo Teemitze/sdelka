@@ -1,8 +1,8 @@
 package app.sdelka.service.conversion;
 
 import app.sdelka.controller.dto.AdvertDto;
-import app.sdelka.model.entity.Advert;
-import app.sdelka.model.entity.AdvertElastic;
+import app.sdelka.entity.Advert;
+import app.sdelka.entity.AdvertElastic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
