@@ -3,6 +3,7 @@ package app.sdelka.controller.dto;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -19,4 +20,5 @@ public class AdvertDto {
     private UserDto user;
     private Long userId;
     private String youtubeUrl;
+    private List<String> photoPath;
 }
