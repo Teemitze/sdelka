@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .mvcMatchers("/api/v1/user/find/**", "/api/v1/user/save").permitAll()
                         .mvcMatchers("/api/v1/advert/find/**").permitAll()
                         .mvcMatchers("/api/v1/category/**").permitAll()
-                        .anyRequest().denyAll()
+                        .anyRequest().permitAll()
                 );
     }
 

@@ -44,6 +44,7 @@ CREATE TABLE adverts
     is_active   boolean NOT NULL,
     is_new      boolean NOT NULL,
     photo_path  VARCHAR[],
+    youtube_url VARCHAR,
     category_id INTEGER REFERENCES categories (id),
     user_id     INTEGER REFERENCES users (id)
 );

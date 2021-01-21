@@ -3,6 +3,7 @@ package app.sdelka.service.conversion;
 import app.sdelka.controller.dto.AdvertDto;
 import app.sdelka.entity.Advert;
 import app.sdelka.entity.AdvertElastic;
+import app.sdelka.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ public class AdvertConversion {
 
     private final CategoryConversion categoryConversion;
     private final UserConversion userConversion;
+    private final UserRepository userRepository;
 
     public AdvertElastic advertDtoToAdvertElastic(AdvertDto advertDto) {
         final AdvertElastic advertElastic = new AdvertElastic();
@@ -55,7 +57,8 @@ public class AdvertConversion {
         advert.setActive(advertDto.isActive());
         advert.setNew(advertDto.isNew());
         advert.setCategory(categoryConversion.categoryNameToCategoryConversionRecursive(advertDto.getCategoryName()));
-        advert.setUser(userConversion.userDtoToUser(advertDto.getUser()));
+        advert.setUser(userRepository.findById(advertDto.getUserId()).orElse(null));
+        advert.setYoutubeUrl(advertDto.getYoutubeUrl());
         return advert;
     }
 }

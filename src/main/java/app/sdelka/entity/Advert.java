@@ -44,4 +44,6 @@ public class Advert {
 
     @ManyToOne
     private User user;
+
+    private String youtubeUrl;
 }

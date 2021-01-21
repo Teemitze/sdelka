@@ -17,4 +17,6 @@ public class AdvertDto {
     private String categoryName;
     private boolean isNew;
     private UserDto user;
+    private Long userId;
+    private String youtubeUrl;
 }
