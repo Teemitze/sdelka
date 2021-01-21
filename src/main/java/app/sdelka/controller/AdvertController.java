@@ -20,20 +20,20 @@ public class AdvertController {
     private final AdvertService advertServiceMapping;
     private final AdvertService advertServiceElasticSearchMapping;
 
-    @PostMapping("/save")
+    @PostMapping
     public void save(@RequestBody AdvertDto advertDto) {
         final UUID uuid = advertServiceMapping.save(advertDto);
         advertDto.setUuid(uuid);
         advertServiceElasticSearchMapping.save(advertDto);
     }
 
-    @DeleteMapping("/delete/{uuid}")
+    @DeleteMapping("/{uuid}")
     @Transactional
     public void deleteByUuid(@PathVariable UUID uuid) {
         advertServiceMapping.deleteByUuid(uuid);
     }
 
-    @GetMapping("/find/{uuid}")
+    @GetMapping("/{uuid}")
     public AdvertDto findByUuid(@PathVariable UUID uuid) {
         return advertServiceElasticSearchMapping.findByUuid(uuid);
     }
