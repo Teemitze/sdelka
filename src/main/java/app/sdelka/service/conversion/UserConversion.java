@@ -2,18 +2,14 @@ package app.sdelka.service.conversion;
 
 import app.sdelka.controller.dto.UserDto;
 import app.sdelka.entity.User;
-import app.sdelka.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-
-import java.util.Collections;
 
 @Component
 @RequiredArgsConstructor
 public class UserConversion {
 
-    private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
     public User userDtoToUser(UserDto userDto) {
@@ -24,7 +20,6 @@ public class UserConversion {
         user.setPhone(userDto.getPhone());
         user.setEnabled(userDto.isEnabled());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        user.setRoles(Collections.singleton(roleRepository.findByName("ROLE_USER")));
         return user;
     }
 

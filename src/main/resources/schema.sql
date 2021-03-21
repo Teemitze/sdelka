@@ -1,13 +1,6 @@
 DROP TABLE IF EXISTS adverts CASCADE;
 DROP TABLE IF EXISTS categories CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS roles CASCADE;
-
-CREATE TABLE roles
-(
-    id   SERIAL PRIMARY KEY,
-    name VARCHAR NOT NULL
-);
 
 CREATE TABLE users
 (
@@ -20,11 +13,6 @@ CREATE TABLE users
     enabled  BOOLEAN NOT NULL DEFAULT TRUE
 );
 
-CREATE TABLE users_role
-(
-    user_id INTEGER REFERENCES users (id),
-    role_id INTEGER REFERENCES roles (id)
-);
 
 CREATE TABLE categories
 (

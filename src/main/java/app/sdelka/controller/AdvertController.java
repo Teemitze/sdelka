@@ -29,11 +29,10 @@ public class AdvertController {
     }
 
     @PostMapping
-    public void save(@RequestBody AdvertDto advertDto, @RequestParam("file") MultipartFile[] files) {
+    public void save(@RequestBody AdvertDto advertDto) {
         final UUID uuid = advertServiceMapping.save(advertDto);
         advertDto.setUuid(uuid);
         advertServiceElasticSearchMapping.save(advertDto);
-        uploadFileService.saveFiles(files, uuid);
     }
 
     @DeleteMapping("/{uuid}")
